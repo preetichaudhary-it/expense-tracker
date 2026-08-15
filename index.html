@@ -7,8 +7,48 @@
 
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <h1>Welcome to DailySpend</h1>
+<body> 
+    <!-- Header Section -->
+    <header class="app-header">
+        <div class="header-container">
+            <div class="brand">
+                <h2>DailySpend</h2> <!--Logo/Title-->
+            </div>
+            <div class="user-nav">
+                <!--Placeholder for username-->
+                <span class="user-name" id="welcomeText">Welcome, User!</span>
+                <button id="logoutBtn" class="btn btn-logout">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <!--Main Section-->
+    <main class="dashboard-container">
+        <!--1. Statistics Summary Grid (3 Cards)-->
+        <section class="summary-grid">
+            <!-- Income Card -->
+            <div class="summary-card income">
+
+            </div>
+
+            <!-- Expense Card-->
+            <div class="summary-card expense">
+
+            </div>
+
+            <!-- Net Balance Card-->
+            <div class="summary-card balance">
+                
+            </div>
+        </section>
+
+        <!-- 2. Workspace Grid -->
+         <section class="dashboard-workspace">
+            
+         </section>
+
+    </main>
+
 
     <script src="js/dashboard.js"></script>
 </body>
