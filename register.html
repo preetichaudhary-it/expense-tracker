@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - DailySpend</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Full-screen wrapper to center the card on the page -->
+    <div class="auth-wrapper">
+
+        <!-- Register Card Container -->
+        <div class="auth-card">
+
+            <!-- Brand & Description Header -->
+            <div class="auth-header">
+                <h1>DailySpend</h1>
+                <p>Create a new account to track your expenses</p>
+            </div>
+
+            <!-- Alert box to display validation errors dynamically using JavaScript -->
+            <div id="alert" class="alert alert-danger"></div>
+
+            <!-- Registration Form -->
+            <form id="registerForm">
+
+                <!-- Full Name Input Group -->
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required autocomplete="name">
+                </div>
+
+                <!-- Email Input Group -->
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email" required autocomplete="email">
+                </div>
+
+                <!-- Password Input Group -->
+                <div class="form-group">
+                    <label for="password">Password (min 6 characters)</label>
+                    <input type="password" id="password" class="form-control" placeholder="Create a password" required autocomplete="new-password">
+                </div>
+
+                <!-- Confirm Password Input Group -->
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your password" required autocomplete="new-password">
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </form>
+
+            <!-- Navigation to the Login Page -->
+            <div class="auth-footer">
+                Already have an account? <a href="login.html">Login here</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Link to Registration JavaScript Logic -->
+    <script src="js/register.js"></script>
+</body>
+</html>
