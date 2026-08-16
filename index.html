@@ -46,9 +46,71 @@
         </section>
 
         <!-- 2. Workspace Grid -->
-         <section class="dashboard-workspace">
-            
-         </section>
+        <section class="dashboard-workspace">
+
+            <!-- LEFT COLUMN: Form to Add/Edit Transactions -->
+            <div class="card">
+                <h3 class="card-title" id="formTitle">Add New Transaction</h3>
+
+                <form id="transactionForm">
+
+                    <!-- Hidden Input to track if we are Editing an existing transaction -->
+                    <input type="hidden" id="editingId" value="">
+
+                    <!-- Transaction Title -->
+                    <div class="form-group">
+                        <label for="transTitle">Transaction Title</label>
+                        <input type="text" id="transTitle" class="form-control" placeholder="e.g., Grocery Shopping" required>
+                    </div>
+
+                    <!-- Transaction Amount -->
+                    <div class="form-group">
+                        <label for="transAmount">Amount (Rs.)</label>
+                        <input type="number" id="transAmount" class="form-control" placeholder="e.g., 45.50" step="0.01" required>
+                    </div>
+
+                     <!-- Transaction Type (Income vs Expense) -->
+                    <div class="form-group">
+                        <label for="transType">Transaction Type</label>
+                        <select id="transType" class="form-control" required>
+                            <option value="" disabled selected>Select Type</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+
+                    <!-- Category -->
+                    <div class="form-group">
+                        <label for="transCategory">Category</label>
+                        <select id="transCategory" class="form-control" required>
+                            <option value="" disabled selected>Select Category</option>
+                            <option value="Salary">Salary</option>
+                            <option value="Food">Food</option>
+                            <option value="Rent">Rent</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Utilities">Utilities</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Date -->
+                    <div class="form-group">
+                        <label for="transDate">Date</label>
+                        <input type="date" id="transDate" class="form-control" required>
+                    </div>
+
+                    <!-- Action Buttons (Add/Save and Cancel) -->
+                    <div class="form-actions">
+                        <button type="submit" id="submitBtn" class="btn btn-primary">Add Transaction</button>
+                        <!-- Cancel edit button (hidden by default, displayed only when editing) -->
+                        <button type="button" id="cancelBtn" class="btn btn-secondary" style="display: none;">Cancel</button>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- RIGHT COLUMN: Filters and Transaction History -->
+        </section>
 
     </main>
 
