@@ -294,7 +294,38 @@ cancelBtn.addEventListener("click", function () {
   cancelBtn.style.display = "none";
 });
 
-// 6. Filters Event Listeners
+// 7. Delete Action Handler
+// --------------------------------------------------------------------------
+// Expose this function globally so the inline HTML button can access it
+window.deleteTransaction = function (id) {
+  // Present a simple confirm dialog box
+  const confirmDelete = confirm("Are you sure you want to delete this transaction?");
+
+  if (confirmDelete) {
+    // Filter out the selected transaction by saving all items EXCEPT the matched one
+    transactions = transactions.filter(function (item) {
+      return item.id !== id;
+    });
+
+    // Save updated transactions list to Local Storage
+    localStorage.setItem(transactionStorageKey, JSON.stringify(transactions));
+
+    // If the item currently being deleted was also in the middle of being edited, cancel Edit state
+    if (editingIdInput.value === id.toString()) {
+      editingIdInput.value = "";
+      transactionForm.reset();
+      formTitle.textContent = "Add New Transaction";
+      submitBtn.textContent = "Add Transaction";
+      cancelBtn.style.display = "none";
+    }
+
+    // Refresh UI
+    updateDashboard();
+  }
+};
+
+
+// 8. Filters Event Listeners
 // --------------------------------------------------------------------------
 // Update list instantly when search text is typed
 searchInput.addEventListener("input", renderTransactions);
@@ -306,7 +337,7 @@ filterCategorySelect.addEventListener("change", renderTransactions);
 filterTypeSelect.addEventListener("change", renderTransactions);
 
 
-// 6. Session Termination (Logout)
+// 9. Session Termination (Logout)
 // --------------------------------------------------------------------------
 logoutBtn.addEventListener("click", function () {
   // Remove the currentUser session key
@@ -316,7 +347,7 @@ logoutBtn.addEventListener("click", function () {
   window.location.href = "login.html";
 });
 
-// 7. Initial Dashboard Load Execution
+// 10. Initial Dashboard Load Execution
 // --------------------------------------------------------------------------
 // Trigger statistical checks and list render immediately on load
 updateDashboard();
