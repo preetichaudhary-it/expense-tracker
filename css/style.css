@@ -486,3 +486,54 @@ body {
   height: 16px;
   display: block;
 }
+
+/*  9. Responsive Design (Mobile / Tablet Queries)
+  ========================================================================== */
+/* Medium Screens (e.g. Tablets) */
+@media (max-width: 900px) {
+  .dashboard-workspace {
+    grid-template-columns: 1fr;
+    /* Stack layout vertically */
+  }
+
+  .summary-grid {
+    gap: 12px;
+  }
+
+  .summary-amount {
+    font-size: 22px;
+  }
+}
+
+
+/* Small Screens (e.g. Mobile Phones) */
+@media (max-width: 600px) {
+  .summary-grid {
+    grid-template-columns: 1fr;
+    /* Stack statistics card vertically */
+  }
+
+  .app-header {
+    padding: 12px 16px;
+  }
+
+  .user-name {
+    display: none;
+    /* Hide welcome text to save space on small mobiles */
+  }
+
+  .auth-card {
+    padding: 24px 18px;
+  }
+
+  .transaction-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .trans-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
