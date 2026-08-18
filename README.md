@@ -1,6 +1,6 @@
-# Expense Tracker
+# DailySpend - Expense Tracker
 
-A simple and beginner-friendly Expense Tracker web application built using HTML, CSS, and JavaScript.
+DailySpend is a simple and beginner-friendly Expense Tracker web application to track income and daily expenses built using HTML, CSS, and JavaScript.
 
 ## Features
 
@@ -18,3 +18,26 @@ A simple and beginner-friendly Expense Tracker web application built using HTML,
 - CSS3
 - JavaScript (Vanilla JS)
 - LocalStorage (for data storage)
+
+## How to Run
+
+Follow these steps to set up and launch the project on your machine:
+
+1. Clone the repository
+    ```bash
+    git clone https://github.com/preetichaudhary-it/expense-tracker.git
+    ```
+
+2. Enter the Project Folder
+    ```bash
+    cd expense-tracker
+    ```
+
+3. Launch the Application
+   Open index.html or login.html directly in any web browser 
+   (or use **Live Server** extension in VS Code)
+
+
+## Author 
+
+**Preeti Chaudhary**
