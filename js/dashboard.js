@@ -95,13 +95,13 @@ function renderTransactions() {
   const typeFilter = filterTypeSelect.value;
 
   // Filter array based on search, category, and type
-  const filteredTransactions = transactions.filter(function(item) {
+  const filteredTransactions = transactions.filter(function (item) {
     // 1. Search term check: match title (case insensitive)
     const matchesSearch = item.title.toLowerCase().includes(searchTerm);
-    
+
     // 2. Category check: matches selection or "all"
     const matchesCategory = (categoryFilter === "all") || (item.category === categoryFilter);
-    
+
     // 3. Type check: matches selection or "all"
     const matchesType = (typeFilter === "all") || (item.type === typeFilter);
 
@@ -126,7 +126,7 @@ function renderTransactions() {
   // Loop through filtered list and build layout templates for each transaction
   for (let i = 0; i < filteredTransactions.length; i++) {
     const item = filteredTransactions[i];
-    
+
     // Format amount sign and choose styling class based on transaction type
     let amountSign = "-";
     let amountClass = "amount-expense";
@@ -250,7 +250,51 @@ transactionForm.addEventListener("submit", function (event) {
   updateDashboard();
 });
 
-// 5. Filters Event Listeners
+// 6. Edit Action Handler
+// --------------------------------------------------------------------------
+// Expose this function globally so the inline HTML button can access it
+window.editTransaction = function (id) {
+  // Find transaction matching the provided ID
+  let targetItem = null;
+  for (let i = 0; i < transactions.length; i++) {
+    if (transactions[i].id === id) {
+      targetItem = transactions[i];
+      break;
+    }
+  }
+
+  // If found, populate the input form with target item data
+  if (targetItem) {
+    editingIdInput.value = targetItem.id;
+    transTitleInput.value = targetItem.title;
+    transAmountInput.value = targetItem.amount;
+    transTypeSelect.value = targetItem.type;
+    transCategorySelect.value = targetItem.category;
+    transDateInput.value = targetItem.date;
+
+    // Change form styling elements to represent Editing state
+    formTitle.textContent = "Edit Transaction";
+    submitBtn.textContent = "Save Changes";
+    cancelBtn.style.display = "inline-flex"; // Show cancel button
+
+    // Scroll to the top of the form layout smoothly for mobile users
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+};  
+
+// Cancel Edit button action
+cancelBtn.addEventListener("click", function () {
+  // Clear hidden input and reset inputs
+  editingIdInput.value = "";
+  transactionForm.reset();
+
+  // Reset visual form states
+  formTitle.textContent = "Add New Transaction";
+  submitBtn.textContent = "Add Transaction";
+  cancelBtn.style.display = "none";
+});
+
+// 6. Filters Event Listeners
 // --------------------------------------------------------------------------
 // Update list instantly when search text is typed
 searchInput.addEventListener("input", renderTransactions);
@@ -264,10 +308,10 @@ filterTypeSelect.addEventListener("change", renderTransactions);
 
 // 6. Session Termination (Logout)
 // --------------------------------------------------------------------------
-logoutBtn.addEventListener("click", function() {
+logoutBtn.addEventListener("click", function () {
   // Remove the currentUser session key
   localStorage.removeItem("dailySpend_currentUser");
-  
+
   // Redirect back to login page
   window.location.href = "login.html";
 });
